@@ -1,0 +1,68 @@
+.form {
+    width: 100%;
+}
+
+.radio {
+    display: flex;
+    justify-content: space-around;
+}
+
+.radio input {
+    margin-left: 10px;
+}
+
+.row {
+    display: flex;
+
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.row:last-child {
+    margin-bottom: 0px;
+}
+
+.space {
+    flex: 1;
+}
+
+.field {
+    padding: 8px 16px;
+    width: 100%;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+
+    border-radius: var(--border-radius);
+    border: 2px solid #091133;
+}
+
+.field[disabled] {
+    cursor: not-allowed;
+}
+
+.field:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.caption {
+    padding: 0 8px;
+    font-size: var(--font-size);
+}
+
+.error {
+    color: tomato;
+}
+
+@media screen and (max-width: 480px) {
+    .form {
+        padding: 0;
+    }
+
+    .fields {
+        flex-wrap: wrap;
+    }
+}
