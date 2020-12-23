@@ -22,6 +22,7 @@ export const Hero: React.FC = () => {
             )}
             contentStyle={{
                 width: '100%',
+                paddingTop: '5rem'
             }}
         >
             <Title>
