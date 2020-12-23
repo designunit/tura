@@ -206,17 +206,17 @@ const Index: NextPage<PageProps> = props => (
 
 export const getStaticProps = async () => {
     const meta: IMeta = {
-        title: 'ТУРА МОЯ ТУРА',
-        description: 'Если ты это читаешь то надо запилить мета теги',
-        image: 'https://tura.manhir.vercel.app/static/hero.jpg',
-        imageWidth: 2500,
-        imageHeight: 1635,
+        title: 'Набережная г. Верхняя Тура',
+        description: 'Предлагайте идеи и делитесь своими историями города и Верхнетуринский пруда',
+        image: 'https://верхняятура.рф/static/hero.jpg',
+        imageWidth: 1200,
+        imageHeight: 717,
 
-        url: 'https://берегурай.рф/',
-        siteName: 'Набережная г.Урай',
+        url: 'https://верхняятура.рф/',
+        siteName: 'Набережная г. Верхняя Тура',
         locale: 'ru_RU',
         type: 'website',
-        domain: 'берегурай.рф',
+        domain: 'верхняятура.рф',
 
         twitterCard: 'summary_large_image',
         twitterSite: '@',
