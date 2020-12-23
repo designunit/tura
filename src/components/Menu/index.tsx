@@ -16,21 +16,21 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
             text: 'О проекте' 
         },
         {
-            href: '/concept',
-            text: 'Концепция' 
-        },
-        {
             href: '/#map',
             text: 'Карта идей' 
         },
-        {
-            href: '/#stories',
-            text: 'Жители о набережной' 
-        },
+        // {
+        //     href: '/#stories',
+        //     text: 'Жители о набережной' 
+        // },
         {
             href: '/#faq',
             text: 'Вопрос/Ответ' 
         },
+        // {
+        //     href: '/concept',
+        //     text: 'Концепция' 
+        // },
     ]
 
     return (
