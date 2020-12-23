@@ -26,7 +26,7 @@ const Index: NextPage<PageProps> = props => (
     <PageLayout>
         <ParallaxProvider>
             <Head>
-                <title>#БЕРЕГУРАЙ</title>
+                <title>Набережная г. Верхняя Тура</title>
                 <Meta meta={props.meta} />
             </Head>
 
@@ -207,7 +207,7 @@ const Index: NextPage<PageProps> = props => (
 export const getStaticProps = async () => {
     const meta: IMeta = {
         title: 'Набережная г. Верхняя Тура',
-        description: 'Предлагайте идеи и делитесь своими историями города и Верхнетуринский пруда',
+        description: 'Предлагайте идеи и делитесь своими историями города и Верхнетуринского пруда',
         image: 'https://верхняятура.рф/static/hero.jpg',
         imageWidth: 1200,
         imageHeight: 717,
