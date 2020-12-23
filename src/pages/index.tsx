@@ -30,7 +30,7 @@ const Index: NextPage<PageProps> = props => (
                 <Meta meta={props.meta} />
             </Head>
 
-            {false ? null : <OpinionForm />}
+            {true ? null : <OpinionForm />}
 
             <Hero />
 
