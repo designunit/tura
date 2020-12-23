@@ -14,9 +14,9 @@ export const About: React.FC = () => (
         <div className={s.container} >
             <div className={s.picture}>
                 <Image
-                    src='/static/kondariver.png'
-                    width={1000}
-                    height={750}
+                    src='/static/about.jpg'
+                    width={1023}
+                    height={627}
                 />
             </div>
             <div className={s.text}>
