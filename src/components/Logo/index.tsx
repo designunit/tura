@@ -14,7 +14,7 @@ export const Logo: React.SFC<LogoProps> = props => {
         return (
 
             <span className={s.logo} style={props.style}>
-                ЛОГО ТУРА
+                Набережная В. Тура
             </span>
         )
     }
@@ -22,7 +22,7 @@ export const Logo: React.SFC<LogoProps> = props => {
     return (
         <Link href={'/'}>
             <a className={s.logo} style={props.style}>
-                ЛОГО ТУРА
+                Набережная В. Тура
             </a>
         </Link>
     )
