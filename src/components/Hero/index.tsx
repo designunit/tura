@@ -48,13 +48,13 @@ export const Hero: React.FC = () => {
                     Карта идей
                 </Button>
                 <div className={s.buttonsSpacer} />
-                <Button
+                {/* <Button
                     href='https://docs.google.com/forms/d/e/1FAIpQLSfoGigVnGxanZPdSK09A8xZ8APUgPeyePbG_nI9USyEg7hiUA/viewform'
                     size='big'
                     theme={'primary'}
                 >
                     Пройти опрос
-                </Button>
+                </Button> */}
             </div>
         </SectionParalaxedBack>
     )
