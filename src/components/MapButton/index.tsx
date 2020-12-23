@@ -9,7 +9,7 @@ export const MapButton: React.FC = props => {
 
     return (
         <Link href={mapUrl}>
-            <a href={mapUrl} className={s.container}>
+            <a className={s.container}>
                 <div className={s.button}>
                     <span>
                         Отметь идею<br/>

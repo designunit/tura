@@ -5,7 +5,7 @@ export type Config = {
 }
 
 export const defaultConfig: Config = {
-    mapUrl: 'https://app.latl.ng/map/bereguray',
+    mapUrl: 'https://map.latl.ng/A4XNPDSKXZJ7N4CR',
 }
 
 export const ConfigContext = createContext<Config>(defaultConfig)
