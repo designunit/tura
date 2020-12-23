@@ -10,14 +10,14 @@ export const Roadmap: React.FC = () => {
             <Title level={2}>График проекта</Title>
             <Steps>
                 <Step
-                    title={'ноябрь — декабрь'}
+                    title={'ноябрь / декабрь'}
                 >
                     <ul>
                         <li>Выбор территории.</li>
                     </ul>
                 </Step>
                 <Step
-                    title={'декабрь — февраль'}
+                    title={'декабрь / февраль'}
                 >
                     <ul>
                         <li>Фокус-группы с жителями</li>
@@ -29,7 +29,7 @@ export const Roadmap: React.FC = () => {
                     </ul>
                 </Step>
                 <Step
-                    title={'март — апрель'}
+                    title={'март / апрель'}
                 >
                     <ul>
                         <li>
@@ -59,7 +59,7 @@ export const Roadmap: React.FC = () => {
                     </ul>
                 </Step>
                 <Step
-                    title={'июнь — август'}
+                    title={'июнь / август'}
                 >
                     <ul>
                         <li>
@@ -68,7 +68,7 @@ export const Roadmap: React.FC = () => {
                     </ul>
                 </Step>
                 <Step
-                    title={'2022 — 2023'}
+                    title={'2022 / 2023'}
                 >
                     <ul>
                         <li>
