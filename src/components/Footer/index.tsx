@@ -8,7 +8,7 @@ export const Footer: React.SFC = props => {
         <footer className={s.footer}>
             <div className={s.items}>
                 <div className={s.item}>
-                    <a href="http://google.com">
+                    <a href='https://minstroyrf.gov.ru/'>
                         <Image
                             src='/static/minstroy.jpg'
                             width={120}
@@ -21,7 +21,7 @@ export const Footer: React.SFC = props => {
                 </div>
 
                 <div className={s.item}>
-                    <a href="http://google.com">
+                    <a href='https://www.v-tura.ru/'>
                         <Image
                             src='/static/admintura.jpg'
                             width={65}
