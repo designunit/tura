@@ -13,11 +13,11 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
     const buttons = [
         {
             href: '/#about',
-            text: 'О проекте' 
+            text: 'О проекте'
         },
         {
             href: '/#map',
-            text: 'Карта идей' 
+            text: 'Карта идей'
         },
         // {
         //     href: '/#stories',
@@ -25,7 +25,7 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
         // },
         {
             href: '/#faq',
-            text: 'Вопрос/Ответ' 
+            text: 'Вопрос/Ответ'
         },
         // {
         //     href: '/concept',
@@ -36,22 +36,19 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
     return (
         <>
             {buttons.map((x, i) => (
-                <div key={i} style={{
-                    fontFamily: 'Bebas Neue',
-                }}>
-                    <Button
-                        href={x.href}
-                        theme={'link'}
-                        underlineRef={underline}
-                        onClick={onClick}
-                        className='mobileMenuButton'
-                        style={{
-                            fontSize: '22px'
-                        }}
-                    >
-                        {x.text}
-                    </Button>
-                </div>
+                <Button
+                    key={i}
+                    href={x.href}
+                    theme={'link'}
+                    underlineRef={underline}
+                    onClick={onClick}
+                    style={{
+                        fontSize: '22px',
+                        fontFamily: 'Bebas Neue',
+                    }}
+                >
+                    {x.text}
+                </Button>
             ))}
             <div
                 ref={underline}
