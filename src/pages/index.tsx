@@ -2,21 +2,16 @@ import Head from 'next/head'
 import { NextPage } from 'next'
 import { Hero } from 'src/components/Hero'
 import { ParallaxProvider } from 'react-scroll-parallax'
-import { Section } from 'src/components/Section'
 import { Meta, IMeta } from 'src/components/Meta'
 import { About } from 'src/components/About'
-import { Story } from 'src/components/Story'
-import { Article } from 'src/components/Article'
-import { Title } from 'src/components/Title'
 import { Footer } from 'src/components/Footer'
-import { Button } from 'src/components/Button'
 import { PageLayout } from 'src/components/PageLayout'
-import { Caption } from 'src/components/Caption'
 import { Map } from 'src/components/Map'
 import { Votes } from 'src/components/Votes'
 import React from 'react'
 import { Roadmap } from 'src/components/Roadmap'
 import { OpinionForm } from 'src/components/OpinionForm'
+import { Faq } from 'src/components/Faq'
 
 interface PageProps {
     meta: IMeta
@@ -46,9 +41,13 @@ const Index: NextPage<PageProps> = props => (
             <span id='map' />
             <Map />
 
-            {/* ЖИТЕЛИ О НАБЕРЕЖНОЙ */}
+            <span id='faq' />
+            <Faq />
+
+            <Footer />
+
             <span id='stories' />
-            {true ? null : (
+            {/* {true ? null : (
                 <Section backgroundColor={'rgba(204, 215, 255, 0.5)'}>
                     <Title level={2}>Жители о набережной</Title>
 
@@ -139,66 +138,7 @@ const Index: NextPage<PageProps> = props => (
                         Поделись мнением
             </Button>
                 </Section>
-            )}
-
-            {/* ФАК */}
-            <span id='faq' />
-            <Section backgroundColor={'#fff'}>
-                <Title level={2}>Вопрос / ответ</Title>
-                <Story
-                    condition='faq'
-                >
-                    <Article>
-                        <Title level={3}>
-                            В&nbsp;Верхней Туре есть множество других проблем городской среды, почему делают набережную?
-                        </Title>
-                        <p>Цель грантового конкурса — создание привлекательных городских пространств, способствующих повышению качества жизни, привлечению в город посетителей, развитию индустрии услуг. Финансирование выделяется только на развитие общественных пространств. Соответственно средства федерального конкурса невозможно пустить на решение других средовых проблем города, для этого существуют другие федеральные и региональные программы выделения средств.</p>
-                    </Article>
-                </Story>
-                <Story
-                    condition='faq'
-                >
-                    <Article>
-                        <Title level={3}>
-                            Когда будет построена набережная?
-                        </Title>
-                        <p>В 2022-2023 годах набережная будет реализована.</p>
-                    </Article>
-                </Story>
-                <Story
-                    condition='faq'
-                >
-                    <Article>
-                        <Title level={3}>
-                            Кто разрабатывает проект набережной?
-                        </Title>
-                        <p>Проектная студия <a href="https://unit4.io">design unit 4</a> (г. Санкт-Петербург). Проекты студии можно посмотреть на сайте <a href="https://unit4.io">unit4.io</a>. Команда студии участвовала в разработке проектов-победителей конкурса лучших проектов создания комфортной городской среды в малых городах и исторических поселениях Министерства строительства РФ.</p>
-                    </Article>
-                </Story>
-                <Story
-                    condition='faq'
-                >
-                    <Article>
-                        <Title level={3}>
-                            Как рассказать о моих идеях для будущей набережной?
-                        </Title>
-                        <p>Шаг 1. Пройти опрос и написать проблемы/ценности/предложения на карте. Шаг 2. Следить за новостями сайта и принять участие в открытых онлайн-встречах по проекту Шаг 3. По желанию вступить в общественный совет проекта.</p>
-                    </Article>
-                </Story>
-
-                <Story
-                    condition='faq'
-                >
-                    <Article>
-                        <Title level={3}>
-                            Опрос прошел, как еще могу помочь?
-                        </Title>
-                        <p>Расскажите о проекте вашим знакомым и соседям, поделитесь ссылкой на сайт и опрос.</p>
-                    </Article>
-                </Story>
-            </Section>
-
-            <Footer />
+            )} */}
 
         </ParallaxProvider>
     </PageLayout>
