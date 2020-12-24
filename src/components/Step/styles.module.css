@@ -46,11 +46,5 @@
     line-height: 40px;
     font-weight: bold;
     
-    white-space: break-space;
-}
-
-@media screen and (max-width: 1280px) {  /* ! 1280 ! */
-    .head h3 {
-        white-space: nowrap;
-    }
+    white-space: nowrap;
 }
