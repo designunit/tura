@@ -583,9 +583,22 @@ export const OpinionForm: React.FC = () => {
 
     const onSubmit = useCallback(async data => {
         setState(stateStatus.send)
+
+        const testData: any = {
+            'sectionOne_gender': '2',
+            'sectionOne_age': '2',
+            'sectionOne_occupation': '2',
+            'sectionOne_district': '2',
+        }
+    
+        const test = new FormData()
+        for ( var key in testData ) {
+            test.append(key, testData[key]);
+        }
+
         const url = QueryString.stringifyUrl({
             url: 'https://script.google.com/macros/s/AKfycbyihfTZdfTieKoGuOMTsYrI39SCghw-jr0YHxaZqn3UrOOK7-Eub7GE/exec',
-            query: data,
+            query: {}, // data,
         }, {
             arrayFormat: 'comma'
         })
@@ -649,15 +662,15 @@ export const OpinionForm: React.FC = () => {
         const data = { ...formData, ...value }
         setFormData(data)
 
-        const newState = formState
-        newState[step] = true
-        setFormState(newState)
+        // const newState = formState
+        // newState[step] = true
+        // setFormState(newState)
 
-        const invalidStep = formState.findIndex(x => !x)
-        if (invalidStep !== -1) {
-            setStep(invalidStep)
-            return
-        }
+        // const invalidStep = formState.findIndex(x => !x)
+        // if (invalidStep !== -1) {
+        //     setStep(invalidStep)
+        //     return
+        // }
 
         onSubmit(data)
 
@@ -759,6 +772,9 @@ export const OpinionForm: React.FC = () => {
                 </p>
             </div>
             {activeFromComponent()}
+            <pre>
+                {JSON.stringify(formData, null, 3)}
+            </pre>
         </>
     )
 }
