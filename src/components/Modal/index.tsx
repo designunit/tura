@@ -2,40 +2,53 @@ import s from './styles.module.css'
 
 import ReactModal from 'react-modal'
 import { Button } from '../Button'
+import React from 'react'
+import { OpinionForm } from '../OpinionForm'
+import { Title } from '../Title'
 // import { useCallback } from 'react'
 
 // type OnRequestClose = (event: React.MouseEvent | React.KeyboardEvent) => void
 
 export type ModalProps = Omit<ReactModal.Props, 'closeTimeoutMS'>
 
-export const Modal: React.FC<ModalProps> = props => {
+export const Modal: React.FC<{
+    modalIsOpen: boolean
+    setModalIsOpen: (isOpen: boolean) => void
+}> = ({ modalIsOpen, setModalIsOpen }) => {
     const delay = 250
-
-    // const onRequestClose = useCallback<OnRequestClose>(event => {
-    //     (props.onRequestClose as any)(event)
-    // }, [props.onRequestClose])
 
     return (
         <ReactModal
-            isOpen={props.isOpen}
+            isOpen={modalIsOpen}
             // onAfterOpen={afterOpenModal}
-            onRequestClose={props.onRequestClose}
+            onRequestClose={() => setModalIsOpen(false)}
             closeTimeoutMS={delay}
             // style={customStyles}
-            contentLabel={props.contentLabel}
             className={s.modal}
             overlayClassName={s.overlay}
             ariaHideApp={false}
         >
             <div className={s.title}>
-                <h2>{props.contentLabel}</h2>
+                <Title level={3}>
+                    Благоустройство Набережной Верхнетуринского пруда | Опрос горожан
+                </Title>
                 <Button
-                    onClick={props.onRequestClose as any}
+                    onClick={() => setModalIsOpen(false)}
                     theme={'link'}
-                >close</Button>
+                    size='small'
+                    className={s.close}                    
+                >
+                    <img
+                        src='/static/closeMenu.svg'
+                        style={{
+                            width: 32,
+                            height: 32,
+                        }}
+                    />
+                </Button>
             </div>
 
-            {props.children}
+            <OpinionForm />
         </ReactModal>
     )
 }

@@ -2,13 +2,68 @@
     width: 100%;
 }
 
-.radio {
+.steps {
+    position: sticky;
+    top: -24px;
+    margin-top: -24px;
+    padding: 1rem 0;
+    z-index: 1;
+
     display: flex;
-    justify-content: space-around;
+
+    background-color: white;
+}
+
+.steps .stepButton:first-child {
+    border-left: solid 1px var(--color-border);
+}
+
+.stepButton {
+    padding: 0;
+    --color-fill: white;
+    --color-border: black;
+    background-color: var(--color-fill);
+    border: solid 1px var(--color-border);
+    border-right: none;
+    border-left: none;
+}
+
+.stepButtonRegular {
+    --color-fill: white;
+    --color-border: black;
+}
+
+.stepButtonNow {
+    --color-fill: var(--color-yellow);
+    --color-border: var(--color-fill);
+}
+.stepButtonComplete {
+    --color-fill: var(--color-button);
+    --color-border: var(--color-fill);
+}
+
+.arrow {
+    position: absolute;
+    right: -20px; 
+    top: -4.5px;
+    height: 123%;
+    z-index: 1;
+}
+
+.radio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.radio label {
+    display: flex;
+
+    margin-left: 10px;
+    padding-bottom: .5rem;
 }
 
 .radio input {
-    margin-left: 10px;
+    margin-right: .5rem;
 }
 
 .row {
@@ -48,13 +103,33 @@
     box-shadow: 0 0 0 4px #cbd6ee;
 }
 
+.questionList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.question {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.questionHead {
+    font-family: Bebas Neue;
+    font-size: 22px;
+
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
 .caption {
     padding: 0 8px;
     font-size: var(--font-size);
 }
 
 .error {
-    color: tomato;
+    color: var(--color-button);
 }
 
 @media screen and (max-width: 480px) {
@@ -64,5 +139,23 @@
 
     .fields {
         flex-wrap: wrap;
+    }
+
+    .radio {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .arrow {
+        right: -25px;
+        top: -5px;
+    }
+
+    .stepButtonText {
+        display: none;
+    }
+    .stepButton > button {
+        height: 41.5px;
+        width: 56px;
     }
 }

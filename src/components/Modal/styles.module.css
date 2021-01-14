@@ -1,5 +1,12 @@
 .modal {
     min-height: 300px;
+    max-height: calc(100vh - (6rem));
+    height: 100%;
+    width: 100%;
+
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    overflow-y: scroll;
 
     background-color: white;
     padding: 24px;
@@ -18,7 +25,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+
+    padding: 0 10%;
 
     display: flex;
     justify-content: center;
@@ -34,6 +43,9 @@
     margin-bottom: 24px;
 }
 
-.title h2 {
-    margin: 0px;
+.close {
+    position: absolute;
+    top: 5.5rem;
+    right: calc(10% + 1rem);
+    z-index: 2;
 }
