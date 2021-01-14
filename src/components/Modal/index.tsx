@@ -30,7 +30,7 @@ export const Modal: React.FC<{
         >
             <div className={s.title}>
                 <Title level={3}>
-                    Благоустройство Набережной Верхнетуринского пруда | Опрос горожан
+                    Благоустройство Набережной Верхнетуринского пруда<br/>Опрос горожан
                 </Title>
                 <Button
                     onClick={() => setModalIsOpen(false)}

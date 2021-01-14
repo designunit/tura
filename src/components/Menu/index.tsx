@@ -3,7 +3,7 @@ import { Button } from "../Button"
 import { useRef } from "react"
 
 interface MenuProps {
-    onClick: () => void
+    onClick: (i:number) => void
 }
 
 export const Menu: React.FC<MenuProps> = ({ onClick }) => {
@@ -19,18 +19,14 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
             href: '/#map',
             text: 'Карта идей'
         },
-        // {
-        //     href: '/#stories',
-        //     text: 'Жители о набережной' 
-        // },
         {
             href: '/#faq',
             text: 'Вопрос/Ответ'
         },
-        // {
-        //     href: '/concept',
-        //     text: 'Концепция' 
-        // },
+        {
+            text: 'Пройти опрос',
+            href: '/'
+        }
     ]
 
     return (
@@ -41,7 +37,7 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
                     href={x.href}
                     theme={'link'}
                     underlineRef={underline}
-                    onClick={onClick}
+                    onClick={() => onClick(i)}
                     style={{
                         fontSize: '22px',
                         fontFamily: 'Bebas Neue',

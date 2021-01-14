@@ -19,9 +19,11 @@ interface PageProps {
 
 const Index: NextPage<PageProps> = props => {
 
-    const [modalIsOpen, setModalIsOpen] = useState(true)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
     return (
-        <PageLayout>
+        <PageLayout
+            openModal={() => setModalIsOpen(true)}
+        >
             <ParallaxProvider>
                 <Head>
                     <title>Набережная г. Верхняя Тура</title>
@@ -33,7 +35,9 @@ const Index: NextPage<PageProps> = props => {
                     setModalIsOpen={setModalIsOpen}
                 />
     
-                <Hero />
+                <Hero
+                    openModal={() => setModalIsOpen(true)}
+                />
     
                 <span id='votes' />
                 <Votes />

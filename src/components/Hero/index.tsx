@@ -6,7 +6,7 @@ import { ConfigContext } from 'src/context/config'
 import { SectionParalaxedBack } from '../SectionParalaxedBack'
 import Image from 'next/image'
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<any> = ({ openModal }) => {
     const { mapUrl } = useContext(ConfigContext)
 
     return (
@@ -48,13 +48,13 @@ export const Hero: React.FC = () => {
                     Карта идей
                 </Button>
                 <div className={s.buttonsSpacer} />
-                {/* <Button
-                    href='https://docs.google.com/forms/d/e/1FAIpQLSfoGigVnGxanZPdSK09A8xZ8APUgPeyePbG_nI9USyEg7hiUA/viewform'
+                <Button
                     size='big'
                     theme={'primary'}
+                    onClick={openModal}
                 >
-                    Пройти опрос
-                </Button> */}
+                    ПРОЙТИ ОПРОС
+                </Button>
             </div>
         </SectionParalaxedBack>
     )

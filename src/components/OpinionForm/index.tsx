@@ -307,7 +307,6 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Какую сферу вам бы хотелось видеть наиболее развитой здесь?'
-                    required={false}
                 >
                     <Radios
                         register={register}
