@@ -59,6 +59,7 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true }) 
 
 const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, errors, checkbox = false }, ref) => (
     <div className={s.radio}>
+        {/* @ts-ignore */}
         {data.map((x, i) => (
             <label key={i}>
                 <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register({ required: 'Обязательное поле' })} />
@@ -77,6 +78,7 @@ const Required = () => (
     <span style={{ color: 'var(--color-button)' }}>*</span>
 )
 
+// @ts-ignore
 const Arrow = ({ className }) => (
     <svg className={cx(s.stepButtonRegular, s.arrow, className)} viewBox="0 0 22 34" fill="none" xmlns="http://www.w3.org/2000/svg" >
         <path d="M21.6092 16.9793L6.21477 30.9051L6.09009 3.19255L21.6092 16.9793Z" fill='var(--color-fill)' />
