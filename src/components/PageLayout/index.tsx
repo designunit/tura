@@ -7,7 +7,7 @@ export const PageLayout: React.FC<any> = props => {
     const onClickMenu = useCallback(() => setIsOpen(!isOpen), [isOpen])
     const onClick = useCallback((i:number) => {
         setIsOpen(false)
-        if (i == 3) {
+        if (i == 2) {
             props.openModal()
         }
     },[])

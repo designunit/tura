@@ -8,9 +8,6 @@
     margin-top: -24px;
     padding: 1rem 0;
     z-index: 1;
-
-    display: flex;
-
     background-color: white;
 }
 
@@ -126,6 +123,12 @@
 .caption {
     padding: 0 8px;
     font-size: var(--font-size);
+}
+
+.questionCaption {
+    margin-top: -1rem;
+    font-size: .75em;
+    color: var(--color-gray);
 }
 
 .error {

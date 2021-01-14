@@ -20,13 +20,13 @@ export const Menu: React.FC<MenuProps> = ({ onClick }) => {
             text: 'Карта идей'
         },
         {
+            text: 'Пройти опрос',
+            href: '/'
+        },
+        {
             href: '/#faq',
             text: 'Вопрос/Ответ'
         },
-        {
-            text: 'Пройти опрос',
-            href: '/'
-        }
     ]
 
     return (

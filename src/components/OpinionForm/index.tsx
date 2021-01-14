@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import React, { useCallback, forwardRef, useState, ReactElement } from 'react'
 import { Button } from '../Button'
 import QueryString from 'query-string'
-import { Title } from '../Title'
 import Image from 'next/image'
 
 const Row: React.SFC = props => (
@@ -46,13 +45,18 @@ const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => (
     />
 ))
 
-interface QuestionProps { head: ReactElement | string, required?: boolean }
-const Question: React.FC<QuestionProps> = ({ head, children, required = true }) => (
+interface QuestionProps { head: ReactElement | string, required?: boolean, caption?: string }
+const Question: React.FC<QuestionProps> = ({ head, children, required = true, caption }) => (
     <div className={s.question}>
         <div className={s.questionHead}>
             {required && <Required />}
             {head}
         </div>
+        {caption && (
+            <p className={s.questionCaption}>
+                {caption}
+            </p>
+        )}
         {children}
     </div>
 )
@@ -176,7 +180,6 @@ const Form1 = (props: any) => {
     )
 }
 
-
 const Form2 = (props: any) => {
     const { handleSubmit, register, errors } = useForm({
         defaultValues: props.defaultValues
@@ -238,6 +241,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='С какими проблемами вы сталкивайтесь на территории?'
+                    caption='Укажите пожалуйста не более 5 проблем территории, которые вас волнуют'
                 >
                     <Radios
                         register={register}
@@ -268,6 +272,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Что вам нравится в Набережной? Что необходимо сохранить при благоустройстве?'
+                    caption='Чем набережная отличается от других пространств города? "Тещин мост", тополя, виды на уральскую природу, сам пруд. В чем ценность Набережной для города?'
                 >
                     <Input
                         name='sectionTwo_like'
@@ -278,6 +283,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Какие воспоминания у вас связаны с Верхнетуринским прудом и Набережной?'
+                    caption='Что раньше было ценного в этом месте для вас и для города'
                 >
                     <Input
                         name='sectionTwo_memory'
@@ -288,6 +294,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Продолжите "Будущая набережная..."'
+                    caption='Выберите тезисы, описывающие будущую набережную или предложите свой вариант видения будущей набережной '
                 >
                     <Radios
                         register={register}
@@ -307,6 +314,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Какую сферу вам бы хотелось видеть наиболее развитой здесь?'
+                    required={false}
                 >
                     <Radios
                         register={register}
@@ -327,6 +335,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Как вы хотите проводить время на будущей Набережной?'
+                    caption='Исходя из выбранных сфер, уточните пожалуйста, чем бы вы хотели заниматься на набережной. Какой спорт, детский отдых, туризм, культурные проекты должны появиться на территории'
                 >
                     <Input
                         name='sectionTwo_activity'
@@ -337,6 +346,7 @@ const Form2 = (props: any) => {
                 </Question>
                 <Question
                     head='Что ещё важного вы хотели бы сказать по поводу благоустройства территории? Или предложить:'
+                    required={false}
                 >
                     <Input
                         name='sectionTwo_comment'
@@ -454,7 +464,7 @@ const Form3 = (props: any) => {
                 </Question>
                 <Question
                     head='Чем на ваш взгляд город Верхняя Тура уникален? В чем отличительные черты города?'
-                    required={false}
+                    caption='Что можно назвать символом Верхней Туры? Какой исторический период, на ваш взгляд, был наиболее важным для города? Какие здесь есть основные исторические или культурные достопримечательности?'
                 >
                     <Input
                         name='sectionThree_unique'
@@ -530,6 +540,7 @@ const Form4 = (props: any) => {
                 </Question>
                 <Question
                     head='Если вы готовы дальше участвовать в проекте, укажите, пожалуйста, любые ваши контактные данные (телефон, адрес e-mail, ссылку на страницу «ВКонтакте», страницу в «Фейсбуке», страницу в «Инстаграм», «Телеграм» никнейм и т.п.) '
+                    caption='В данном вопросе можно поставить прочерк, если вы не готовы делиться контактными данными'
                 >
                     <Input
                         name='sectionFour_contact'
@@ -554,13 +565,15 @@ const Form4 = (props: any) => {
                 >
                     {props.buttonText}
                 </Button>
+                <p style={{ alignSelf: 'center' }}>
+                    Нажимая эту кнопку я соглашаюсь на обработку персональных данных.
+                </p>
             </div>
         </Form>
     )
 }
 
 export const OpinionForm: React.FC = () => {
-    const { handleSubmit, register, errors } = useForm()
     const [state, setState] = useState('ОТПРАВИТЬ')
     const stateStatus = {
         send: 'Отправляем…',
@@ -646,7 +659,6 @@ export const OpinionForm: React.FC = () => {
             return
         }
 
-        // send data to table here
         onSubmit(data)
 
     }, [formData, formState, step])
@@ -690,44 +702,63 @@ export const OpinionForm: React.FC = () => {
     }
 
     const stepButtons = [
-        'О вас',
-        'О набережной',
-        'О городе',
-        'Дальнейшее участие',
+        {
+            button: 'О вас',
+            description: 'В этом разделе мы задаем вопросы, чтобы получше с вами познакомиться'
+        },
+        {
+            button: 'О набережной',
+            description: 'Давайте вместе оценим территорию и соберем предложения'
+        },
+        {
+            button: 'О городе',
+            description: ''
+        },
+        {
+            button: 'Дальнейшее участие',
+            description: ''
+        },
     ]
 
     return (
         <>
-            <div className={s.steps}>
-                {formState.map((x, i) => (
-                    <div key={i}
-                        style={{
-                            position: 'relative'
-                        }}
-                    >
-                        <div className={cx(s.stepButton, x && s.stepButtonComplete, step == i && s.stepButtonNow)}>
-                            <Button
-                                theme='link'
-                                key={i}
-                                onClick={() => {
-                                    setStep(i)
-                                }}
-                            >
-                                <span className={s.stepButtonText}>
-                                    {stepButtons[i]}
-                                </span>
-                            </Button>
+            <div
+                className={s.steps}
+            >
+                <div style={{ display: 'flex' }}>
+                    {formState.map((x, i) => (
+                        <div key={i}
+                            style={{
+                                position: 'relative'
+                            }}
+                        >
+                            <div className={cx(s.stepButton, x && s.stepButtonComplete, step == i && s.stepButtonNow)}>
+                                <Button
+                                    theme='link'
+                                    key={i}
+                                    onClick={() => {
+                                        setStep(i)
+                                    }}
+                                >
+                                    <span className={s.stepButtonText}>
+                                        {stepButtons[i].button}
+                                    </span>
+                                </Button>
+                            </div>
+                            <Arrow
+                                className={cx(x && s.stepButtonComplete, step == i && s.stepButtonNow)}
+                            />
                         </div>
-                        <Arrow
-                            className={cx(x && s.stepButtonComplete, step == i && s.stepButtonNow)}
-                        />
-                    </div>
-                ))}
+                    ))}
+                </div>
+                <p style={{
+                    fontFamily: 'Bebas Neue',
+                    margin: '1rem 0 0 0',
+                }}>
+                    {stepButtons[step].description}
+                </p>
             </div>
             {activeFromComponent()}
-            {/* <pre>
-                {JSON.stringify(formData, null, 3)}
-            </pre> */}
         </>
     )
 }
