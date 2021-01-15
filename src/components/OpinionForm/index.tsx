@@ -583,15 +583,9 @@ export const OpinionForm: React.FC = () => {
 
     const onSubmit = useCallback(async data => {
         setState(stateStatus.send)
-        const url = QueryString.stringifyUrl({
-            url: 'https://script.google.com/macros/s/AKfycbyihfTZdfTieKoGuOMTsYrI39SCghw-jr0YHxaZqn3UrOOK7-Eub7GE/exec',
-            query: data,
-        }, {
-            arrayFormat: 'comma'
-        })
 
-        await fetch(url, { method: 'GET', })
-            .then(res => {
+        await fetch('/api', { method: 'POST', body: JSON.stringify(data)})
+            .then((res) => {
                 if (res.status !== 200) {
                     setState(stateStatus.error)
                     console.log(res)
