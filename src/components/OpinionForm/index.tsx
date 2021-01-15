@@ -573,7 +573,7 @@ const Form4 = (props: any) => {
     )
 }
 
-export const OpinionForm: React.FC = () => {
+export const OpinionForm: React.FC<any> = ({ showFinish }) => {
     const [state, setState] = useState('ОТПРАВИТЬ')
     const stateStatus = {
         send: 'Отправляем…',
@@ -594,11 +594,9 @@ export const OpinionForm: React.FC = () => {
             })
             .then(res => {
                 res.result === 'error' && console.log(res)
-                setState(res.result === 'success' ? stateStatus.ok : stateStatus.error)
+                setState(res.result === 'success' ? showFinish() : stateStatus.error)
             })
     }, [])
-
-    // MULTISTEP STUFF
 
     const [formData, setFormData] = useState({
         'sectionOne_gender': null,
