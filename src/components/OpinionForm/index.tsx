@@ -61,22 +61,44 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true, ca
     </div>
 )
 
-const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, errors, checkbox = false }, ref) => (
-    <div className={s.radio}>
-        {/* @ts-ignore */}
-        {data.map((x, i) => (
-            <label key={i}>
-                <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register({ required: 'Обязательное поле' })} />
-                {x}
-            </label>
-        ))}
-        {errors?.[name] && (
-            <p className={cx(s.caption, s.error)}>
-                {errors[name].message}
-            </p>
-        )}
-    </div>
-))
+const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, errors, checkbox = false, userAnwser = false, required = true }, ref) => {
+    const [state, setState] = useState('')
+    const [checked, setChecked] = useState(false)
+    return (
+        <>
+            <div className={s.radio}>
+                {/* @ts-ignore */}
+                {data.map((x, i) => (
+                    <label key={i}>
+                        <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register(required && { required: 'Обязательное поле' })} />
+                        {x}
+                    </label>
+                ))}
+                {userAnwser && (
+                    <label>
+                        <input onChange={() => setChecked(!checked)} checked={checked} name={name} type={checkbox ? 'checkbox' : 'radio'} value={state} ref={register({ required: 'Обязательное поле' })} />
+                        <Input
+                            onChange={(e) => {
+                                setState(e.target.value)
+                                setChecked(true)
+                            }}
+                            style={{
+                                padding: '0 8px',
+                                borderWidth: '1px',
+                            }}
+                            placeholder='Другое...'
+                        />
+                    </label>
+                )}
+            </div>
+            {errors?.[name] && (
+                <p className={cx(s.caption, s.error)}>
+                    {errors[name].message}
+                </p>
+            )}
+        </>
+    )
+})
 
 const Required = () => (
     <span style={{ color: 'var(--color-button)' }}>*</span>
@@ -221,6 +243,7 @@ const Form2 = (props: any) => {
                         errors={errors}
                         name='sectionTwo_purpose'
                         checkbox
+                        userAnwser
                         data={[
                             'Прогуливаюсь',
                             'Прохожу транзитом',
@@ -248,6 +271,7 @@ const Form2 = (props: any) => {
                         errors={errors}
                         name='sectionTwo_propblem'
                         checkbox
+                        userAnwser
                         data={[
                             'Проблемы благоустройства (освещение, состояние дорожек)',
                             'Не хватает озеленения и ландшафтных решений',
@@ -301,6 +325,7 @@ const Form2 = (props: any) => {
                         errors={errors}
                         name='sectionTwo_fututre'
                         checkbox
+                        userAnwser
                         data={[
                             'Озелененная: разнообразные ландшафтные решения',
                             'Благоустроенная: состояние дорожек, покрытий, освещение',
@@ -321,6 +346,7 @@ const Form2 = (props: any) => {
                         errors={errors}
                         name='sectionTwo_field'
                         checkbox
+                        required={false}
                         data={[
                             'Культура',
                             'Образование',
@@ -390,6 +416,7 @@ const Form3 = (props: any) => {
                         errors={errors}
                         name='sectionThree_activity'
                         checkbox
+                        userAnwser
                         data={[
                             'Слушаю музыку дома',
                             'Смотрю ТВ дома',
@@ -432,6 +459,7 @@ const Form3 = (props: any) => {
                         errors={errors}
                         name='sectionThree_miss'
                         checkbox
+                        userAnwser
                         data={[
                             'Базового благоустройства городских пространств ( дорог, тротуаров, скамеек, урн, освещения и т.п.)',
                             'Современных благоустроенных общественных пространств (площадей, пешеходных улиц, скверов, парков и т.п.)',
@@ -554,13 +582,12 @@ const Form4 = (props: any) => {
                     )}
                 </Question>
                 <Button
-                    theme={'primary'}
+                    theme={'default'}
                     size={'big'}
                     type={'submit'}
                     style={{
                         alignSelf: 'center',
-                        border: 'solid 2px black',
-                        color: 'black',
+                        backgroundColor: 'var(--color-button)'
                     }}
                 >
                     {props.buttonText}
@@ -584,7 +611,7 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
     const onSubmit = useCallback(async data => {
         setState(stateStatus.send)
 
-        await fetch('/api', { method: 'POST', body: JSON.stringify(data)})
+        await fetch('/api', { method: 'POST', body: JSON.stringify(data) })
             .then((res) => {
                 if (res.status !== 200) {
                     setState(stateStatus.error)
@@ -599,30 +626,30 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
     }, [])
 
     const [formData, setFormData] = useState({
-        'sectionOne_gender': null,
-        'sectionOne_age': null,
-        'sectionOne_occupation': null,
-        'sectionOne_district': null,
+        // 'sectionOne_gender': null,
+        // 'sectionOne_age': null,
+        // 'sectionOne_occupation': null,
+        // 'sectionOne_district': null,
 
-        'sectionTwo_timing': null,
-        'sectionTwo_purpose': null,
-        'sectionTwo_propblem': null,
-        'sectionTwo_like': null,
-        'sectionTwo_memory': null,
-        'sectionTwo_fututre': null,
-        'sectionTwo_field': null,
-        'sectionTwo_activity': null,
-        'sectionTwo_comment': null,
+        // 'sectionTwo_timing': null,
+        // 'sectionTwo_purpose': null,
+        // 'sectionTwo_propblem': null,
+        // 'sectionTwo_like': null,
+        // 'sectionTwo_memory': null,
+        // 'sectionTwo_fututre': null,
+        // 'sectionTwo_field': null,
+        // 'sectionTwo_activity': null,
+        // 'sectionTwo_comment': null,
 
-        'sectionThree_activity': null,
-        'sectionThree_place': null,
-        'sectionThree_miss': null,
-        'sectionThree_opportunity': null,
-        'sectionThree_unique': null,
-        'sectionThree_idea': null,
+        // 'sectionThree_activity': null,
+        // 'sectionThree_place': null,
+        // 'sectionThree_miss': null,
+        // 'sectionThree_opportunity': null,
+        // 'sectionThree_unique': null,
+        // 'sectionThree_idea': null,
 
-        'sectionFour_involve': null,
-        'sectionFour_contact': null,
+        // 'sectionFour_involve': null,
+        // 'sectionFour_contact': null,
     })
     const [formState, setFormState] = useState([false, false, false, false])
     const [step, setStep] = useState(0)

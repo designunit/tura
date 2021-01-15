@@ -15,7 +15,8 @@
     
     white-space: nowrap;
 
-    --color-bg: white
+    --color-bg: white;
+    --color-border: black;
 }
 
 .button[disabled] {
@@ -25,6 +26,7 @@
 .button:hover:not([disabled]):not(.themeLink) {
     --color-text: white;
     --color-bg: var(--color-gray);
+    --color-border: white;
 }
 
 /* THEME */
@@ -32,14 +34,15 @@
 .themeDefault {
     background: var(--color-bg);
     color: var(--color-text);
-    border: 2px solid black;
+    border: 2px solid var(--color-border);
 }
 
 .themePrimary {
     --color-bg: var(--color-button);
     --color-text: white;
+    --color-border: white;
     background: var(--color-bg);
-    border: 2px solid white;
+    border: 2px solid var(--color-border);
     color: var(--color-text);
 }
 

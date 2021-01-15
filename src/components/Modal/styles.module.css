@@ -43,9 +43,8 @@
     margin-bottom: 24px;
 }
 
-.close {
-    position: absolute;
-    top: 5.5rem;
-    right: calc(10% + 1rem);
-    z-index: 2;
+@media screen and (max-width: 1280px) {
+    .close {
+        display: none;
+    }
 }
