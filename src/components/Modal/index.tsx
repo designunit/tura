@@ -69,7 +69,6 @@ export const Modal: React.FC<{
                         onClick={() => setState('form')}
                         theme={'default'}
                         size='big'
-                        className={s.close}
                         style={{
                             marginTop: '2rem',
                             width: 'fit-content',
