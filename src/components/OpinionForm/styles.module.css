@@ -136,20 +136,7 @@
     color: var(--color-button);
 }
 
-@media screen and (max-width: 480px) {
-    .form {
-        padding: 0;
-    }
-
-    .fields {
-        flex-wrap: wrap;
-    }
-
-    .radio {
-        display: flex;
-        flex-direction: column;
-    }
-    
+@media screen and (max-width: 1280px) {
     .arrow {
         right: -25px;
         top: -5px;
@@ -161,5 +148,11 @@
     .stepButton > button {
         height: 41.5px;
         width: 56px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .radio {
+        display: flex;
+        flex-direction: column;
     }
 }

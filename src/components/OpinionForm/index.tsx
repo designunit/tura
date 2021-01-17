@@ -1,9 +1,8 @@
 import s from './styles.module.css'
 import cx from 'classnames'
 import { useForm } from 'react-hook-form'
-import React, { useCallback, forwardRef, useState, ReactElement } from 'react'
+import React, { useCallback, forwardRef, useState, ReactElement, useEffect } from 'react'
 import { Button } from '../Button'
-import QueryString from 'query-string'
 import Image from 'next/image'
 
 const Row: React.SFC = props => (
@@ -119,6 +118,8 @@ const Form1 = (props: any) => {
         defaultValues: props.defaultValues
     })
 
+    useEffect(() => props.scrollTop())
+
     return (
         <Form onSubmit={handleSubmit(props.onSubmit)}>
             <div className={s.questionList}>
@@ -206,6 +207,7 @@ const Form2 = (props: any) => {
     const { handleSubmit, register, errors } = useForm({
         defaultValues: props.defaultValues
     })
+    useEffect(() => props.scrollTop())
 
     return (
         <Form onSubmit={handleSubmit(props.onSubmit)}>
@@ -405,6 +407,8 @@ const Form3 = (props: any) => {
         defaultValues: props.defaultValues
     })
 
+    useEffect(() => props.scrollTop())
+
     return (
         <Form onSubmit={handleSubmit(props.onSubmit)}>
             <div className={s.questionList}>
@@ -539,6 +543,8 @@ const Form4 = (props: any) => {
     const { handleSubmit, register, errors } = useForm({
         defaultValues: props.defaultValues
     })
+    
+    useEffect(() => props.scrollTop())
 
     return (
         <Form onSubmit={handleSubmit(props.onSubmit)}>
@@ -600,7 +606,7 @@ const Form4 = (props: any) => {
     )
 }
 
-export const OpinionForm: React.FC<any> = ({ showFinish }) => {
+export const OpinionForm: React.FC<any> = ({ showFinish, scrollTop }) => {
     const [state, setState] = useState('ОТПРАВИТЬ')
     const stateStatus = {
         send: 'Отправляем…',
@@ -625,32 +631,7 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
             })
     }, [])
 
-    const [formData, setFormData] = useState({
-        // 'sectionOne_gender': null,
-        // 'sectionOne_age': null,
-        // 'sectionOne_occupation': null,
-        // 'sectionOne_district': null,
-
-        // 'sectionTwo_timing': null,
-        // 'sectionTwo_purpose': null,
-        // 'sectionTwo_propblem': null,
-        // 'sectionTwo_like': null,
-        // 'sectionTwo_memory': null,
-        // 'sectionTwo_fututre': null,
-        // 'sectionTwo_field': null,
-        // 'sectionTwo_activity': null,
-        // 'sectionTwo_comment': null,
-
-        // 'sectionThree_activity': null,
-        // 'sectionThree_place': null,
-        // 'sectionThree_miss': null,
-        // 'sectionThree_opportunity': null,
-        // 'sectionThree_unique': null,
-        // 'sectionThree_idea': null,
-
-        // 'sectionFour_involve': null,
-        // 'sectionFour_contact': null,
-    })
+    const [formData, setFormData] = useState({})
     const [formState, setFormState] = useState([false, false, false, false])
     const [step, setStep] = useState(0)
 
@@ -688,6 +669,7 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
                 return (
                     <Form1
                         defaultValues={formData}
+                        scrollTop={scrollTop}
                         onSubmit={onSubmitStep}
                     />
                 )
@@ -695,6 +677,7 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
                 return (
                     <Form2
                         defaultValues={formData}
+                        scrollTop={scrollTop}
                         onSubmit={onSubmitStep}
                     />
                 )
@@ -702,6 +685,7 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
                 return (
                     <Form3
                         defaultValues={formData}
+                        scrollTop={scrollTop}
                         onSubmit={onSubmitStep}
                     />
                 )
@@ -709,6 +693,7 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
                 return (
                     <Form4
                         defaultValues={formData}
+                        scrollTop={scrollTop}
                         onSubmit={finalSubmit}
                         buttonText={state}
                     />
@@ -755,6 +740,9 @@ export const OpinionForm: React.FC<any> = ({ showFinish }) => {
                                 <Button
                                     theme='link'
                                     key={i}
+                                    style={{
+                                        outline: 0,
+                                    }}
                                     onClick={() => {
                                         setStep(i)
                                     }}
