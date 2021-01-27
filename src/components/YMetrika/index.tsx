@@ -22,9 +22,9 @@ export const YMetrika: React.FC<YMetrikaProps> = props => {
                             src={`https://mc.yandex.ru/watch/${props.number}`}
                             style={{
                                 position: 'absolute',
-                                left: '-9999px'
+                                left: '-9999px',
                             }}
-                            alt=""
+                            alt=''
                         />
                     </div>
                 </noscript>

@@ -7,30 +7,28 @@ import { YMetrika } from 'src/components/YMetrika'
 import { ConfigContext, defaultConfig } from 'src/context/config'
 import { ControlsContext } from 'src/context/controls'
 
-const App: AppType = props => {
+const App: AppType = (props) => {
     const { Component, pageProps } = props
     const metrika = process.env.YANDEX_METRIKA as string
 
     return (
         <ConfigContext.Provider value={defaultConfig}>
-            <ControlsContext.Provider value={{
-                shape: 'default',
-                size: 'default',
-            }}>
+            <ControlsContext.Provider
+                value={{
+                    shape: 'default',
+                    size: 'default',
+                }}
+            >
                 <Head>
-                    <meta charSet="utf-8" />
-                    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+                    <meta charSet='utf-8' />
+                    <meta
+                        name='viewport'
+                        content='width=device-width, maximum-scale=1.0'
+                    />
 
-                    {true ? null : (<>
-                        <meta name="yandex-verification" content="819101876637a93a" />
-
-                        {!metrika ? null : (
-                            <YMetrika
-                                number={metrika}
-                                mode={'script'}
-                            />
-                        )}
-                    </>)}
+                    {!metrika ? null : (
+                        <YMetrika number={metrika} mode={'script'} />
+                    )}
                 </Head>
 
                 <Component {...pageProps} />
