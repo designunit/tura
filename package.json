@@ -1,0 +1,8 @@
+{
+    "name": "tipakakuray",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "build": "echo 'tura is too old project to build it at CI so just get out dir'"
+    }
+}
